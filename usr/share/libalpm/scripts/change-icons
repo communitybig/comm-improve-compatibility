@@ -2,7 +2,7 @@
 
 # Script to change HP-Uiscan icon
 desktopFile="/usr/share/applications/hp-uiscan.desktop"
-backupFile="$desktopFile.backup"
+backupFile="$desktopFile.bak"
 
 # Check if the file exists
 if [ -f "$desktopFile" ]; then

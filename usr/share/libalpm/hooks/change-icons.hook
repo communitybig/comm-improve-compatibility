@@ -2,9 +2,11 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
+Target = comm-improve-compatibility
 Target = hplip
 
 [Action]
 Description = Changed icon hp-uiscan
-Exec = /usr/share/libalpm/scripts/change-icons
 When = PostTransaction
+Exec = /usr/share/libalpm/scripts/change-icons
+
