@@ -1,11 +1,11 @@
 # Maintainer: Tales A. Mendonça <talesam@gmail.com>
 
-pkgname=pkgbuild-template
-pkgdesc="Package template for Communitybig"
+pkgname=comm-improve-compatibility
+pkgdesc="System compatibility hooks and general improvements for BigCommunity"
 # Uncomment and edit the following lines as needed
 #depends=('')
 #makedepends=('')
-#optdepends=('')
+optdepends=('hplip: for HP printer support')
 #conflicts=('')
 #provides=('')
 #replaces=('')

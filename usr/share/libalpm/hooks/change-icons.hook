@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = hplip
+
+[Action]
+Description = Changed icon hp-uiscan
+Exec = /usr/share/libalpm/scripts/change-icons
+When = PostTransaction

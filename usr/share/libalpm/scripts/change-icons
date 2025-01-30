@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Script to change HP-Uiscan icon
+desktopFile="/usr/share/applications/hp-uiscan.desktop"
+
+if [ -f "$desktopFile" ]; then
+    # Backup the original file
+    cp "$desktopFile" "$desktopFile.backup" 2>/dev/null
+
+    # Change the icon
+    sed -i 's|^Icon=.*|Icon=hp_logo|' "$desktopFile"
+    
+    # Check if the change was successful
+    if [ $? -eq 0 ]; then
+        echo "Successfully changed hp-uiscan icon"
+    else
+        echo "Failed to change hp-uiscan icon"
+        # Restore backup if change failed
+        [ -f "$desktopFile.backup" ] && mv "$desktopFile.backup" "$desktopFile"
+    fi
+else
+    echo "HP-Uiscan desktop file not found"
+fi
