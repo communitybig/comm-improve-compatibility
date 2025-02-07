@@ -4,6 +4,7 @@ Operation = Install
 Operation = Upgrade
 Target = lightdm-slick-greeter
 Target = comm-xfce-config
+Target = comm-cinnamon-config
 
 [Action]
 Description = Change the default wallpaper of lightdm-slick-greeter
