@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/fastfetch --config "/etc/fastfetch/config.jsonc" "$@"
+/usr/bin/fastfetch --file "/etc/fastfetch/config.jsonc" "$@"
