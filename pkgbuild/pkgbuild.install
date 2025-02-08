@@ -34,17 +34,9 @@ post_install() {
 # }
 
 # Function executed after package upgrade
-# post_upgrade() {
-#     echo "Finalizing package upgrade..."
-    # Usually, post_install is called here to ensure
-    # all post-installation configurations are applied
-#     post_install
-
-    # Example: Check and update configuration files
-    # if [ -f /etc/mypackage/config.conf.pacnew ]; then
-    #     echo "New configuration file available. Please review /etc/mypackage/config.conf.pacnew"
-    # fi
-# }
+post_upgrade() {
+    post_install
+}
 
 # Function executed before package removal
 # pre_remove() {
