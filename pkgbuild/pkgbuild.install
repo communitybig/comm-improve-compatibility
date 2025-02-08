@@ -19,11 +19,6 @@ post_install() {
     else
         echo -e "\n[Seat:*]\ngreeter-session=lightdm-slick-greeter" >> /etc/lightdm/lightdm.conf
     fi
-    
-    # Restart LightDM if it is running
-    if systemctl is-active lightdm.service; then
-        systemctl restart lightdm.service
-    fi
 }
 
 # Function executed before package upgrade
