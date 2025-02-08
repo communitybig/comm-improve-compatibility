@@ -2,31 +2,33 @@
 # This file contains scripts that are executed at different stages of package installation/upgrade/removal
 
 # Function executed before package installation
-# pre_install() {
-#     echo "Preparing to install the package..."
-    # Example: Check for system dependencies
-    # if ! command -v required_command &> /dev/null; then
-    #     echo "Error: required_command not found. Please install it before continuing."
-    #     exit 1
-    # fi
-# }
+pre_install() {
+    # Verifica se os pacotes antigos E o LightDM estão instalados
+    if (pacman -Q lightdm-webkit2-greeter &>/dev/null || pacman -Q lightdm-webkit2-theme-community &>/dev/null) && pacman -Q lightdm &>/dev/null; then
+        touch /tmp/comm_install_slick
+    fi
+}
 
 # Function executed after package installation
 post_install() {
-    # Check if the [Seat:*] section exists and replace the greeter
+    # Instala o slick-greeter apenas se o LightDM e os pacotes antigos existiam
+    if [ -f /tmp/comm_install_slick ]; then
+        pacman -S --noconfirm lightdm-slick-greeter
+        rm /tmp/comm_install_slick
+    fi
+
+    # Configura o LightDM para usar o slick-greeter
     if grep -q '^\[Seat:\*\]' /etc/lightdm/lightdm.conf; then
-        sed -i '/^\[Seat:\*\]/,/^$/ s/^#*\s*greeter-session=.*/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
+        sed -i '/^\[Seat:\*\]/,/^$/ s/^#*\s*greeter-session\s*=.*/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
     else
         echo -e "\n[Seat:*]\ngreeter-session=lightdm-slick-greeter" >> /etc/lightdm/lightdm.conf
     fi
 }
 
 # Function executed before package upgrade
-# pre_upgrade() {
-#     echo "Preparing to upgrade the package..."
-    # Example: Backup configuration files
-    # cp /etc/mypackage/config.conf /etc/mypackage/config.conf.bak
-# }
+pre_upgrade() {
+    pre_install
+}
 
 # Function executed after package upgrade
 post_upgrade() {
