@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+fileIn="/usr/share/applications/com.github.iwalton3.jellyfin-media-player.desktop"
+fileOut="/usr/share/applications/jellyfinmediaplayer.desktop"
+
+# Check if $fileIn exists
+if [ -f $fileIn ]; then
+    # If it exists, create a backup
+    cp -f $fileIn $fileIn.bak
+fi
+
+# Copy the custom configuration file
+cp -f $fileIn $fileOut
