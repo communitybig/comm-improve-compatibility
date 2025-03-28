@@ -10,4 +10,4 @@ if [ -f $fileIn ]; then
 fi
 
 # Copy the custom configuration file
-cp -f $fileIn $fileOut
+mv -f $fileIn $fileOut
